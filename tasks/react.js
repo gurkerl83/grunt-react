@@ -46,6 +46,14 @@ module.exports = function(grunt) {
       var compiled = [];
       grunt.util.async.concatSeries(files, function(file, next) {
         grunt.log.writeln('[react] Compiling ' + file.cyan + ' --> ' + destFile.cyan);
+        
+        var _options = {};
+        Object.keys(options).forEach(function(prop) {
+          if (options.hasOwnProperty(prop)) {
+            _options[prop] = options[prop];
+          }
+        });
+        _options.sourceFilename = file;
 
         try {
           compiled.push(transform(grunt.file.read(file), options));
