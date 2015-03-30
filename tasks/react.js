@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         _options.sourceFilename = file;
 
         try {
-          compiled.push(transform(grunt.file.read(file), options));
+          compiled.push(transform(grunt.file.read(file), _options));
         } catch (e) {
           grunt.event.emit('react.error', file, e);
           grunt.fail.warn(e);
